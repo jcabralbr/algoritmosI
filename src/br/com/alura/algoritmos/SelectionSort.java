@@ -10,7 +10,8 @@ public class SelectionSort {
                 new Produto("Fusca", 17000)
         };
 
-        ordena(produtos, produtos.length);
+        //selectionSort(produtos, produtos.length);
+        novoSort(produtos, produtos.length);
 
         for (Produto produto : produtos){
             System.out.println(produto.getNome() + " custa " + produto.getPreco());
@@ -18,7 +19,22 @@ public class SelectionSort {
         }
     }
 
-    private static void ordena(Produto[] produtos, int quantidadeElementos) {
+    private static void novoSort(Produto[] produtos, int quantidadeElementos) {
+        for (int atual = 0; atual < quantidadeElementos; atual++){
+            int analise = atual;
+            while (analise > 0 && produtos[analise].getPreco() < produtos[analise-1].getPreco()){
+                Produto produtoAnalise = produtos[analise];
+                Produto produtoAnalisemenos1 = produtos[analise-1];
+                produtos[analise] = produtoAnalisemenos1;
+                produtos[analise-1] = produtoAnalise;
+                analise--;
+
+            }
+
+        }
+    }
+
+    private static void selectionSort(Produto[] produtos, int quantidadeElementos) {
         for (int atual = 0; atual < quantidadeElementos -1; atual++){
             int menor = buscaMenor(produtos, atual, quantidadeElementos - 1);
 
